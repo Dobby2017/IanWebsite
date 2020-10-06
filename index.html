@@ -148,14 +148,14 @@
 </div>
 <div class="col-md-4 footer-box">
     <p><b>專人回電</b></p>
-		<form id="contactform" method="POST">
+		<!--<form id="contactform" method="POST">
 		    <input type="hidden" name="_language" value="zh-TW" />
 		    <input type ="hidden" name ="_subject" value ="家長資訊！" />
 		    <input type="hidden" name="_next" value="/dumpling/index.html" />
 		    <input type="text" name="家長手機" class="form-control" placeholder="家長手機">
 			<input type="submit" class="btn btn-primary" value="送出">
 		</form>
-    <!--<input type="email" class="form-control" placeholder="你的電子信箱">
+    <input type="email" class="form-control" placeholder="你的電子信箱">
     <button type="button" class="btn btn-primary">送出</button>-->
 </div>
 </div>
@@ -164,9 +164,9 @@
 </div>    
 </section>
 <form action="https://formspree.io/dobbysteamkids@gmail.com" method="POST">
-    <input name="_replyto" type="telephone" required/>
+    <input type="text" name="家長手機" class="form-control" placeholder="家長手機">
     <input type="hidden" name="_next" value="//dumpling/index.html" />
-    <button>專人回電22</button>
+    <button>專人回電33</button>
 </form>
 <script>
     var contactform =  document.getElementById('contactform');
