@@ -249,31 +249,12 @@ hr
     text-align:center;
     
 }
-/*----------小螢幕-----------*/
+/*----------小螢幕
 @media only screen and (max-width:900px)
 {
-    /*----------選單區塊----------*/
-    /*navbar文字*/
-    .navbar-nav li
-    {
-        padding: 0 10px;
-        font-size: 30px;
-    }
-    /*navbar橫條bar*/
-    .fa-bars
-    {
-        color: #fff ;
-        font-size: 50px!important;
-    }
-    /*----------banner區塊----------*/
-    .prompt-title
-    {
-        font-size: 50px;
-        font-weight: 600;
-        margin-top: 100px;
-    }
-}
 
+}
+-----------*/
 
 
 
