@@ -17,14 +17,14 @@ body
 }
 .navbar
 {
-    background-image: linear-gradient(to right, #a517ba, #5f7182);  
+    background-image: linear-gradient(to right, #a517ba, #000);  
     padding: 0 !important; 
 }
 /*向右的背景漸層色 取得最高優先權*/
 /*logo圖*/
 .navbar-brand img
 { 
-    height: 190px;
+    height: 40px;
     padding-left: 20px;
 }
 .navbar-nav li
