@@ -8,6 +8,7 @@ body
   font-family: sans-serif;
 }
 /*----------選單區塊----------*/
+/*--position: sticky：內容向上捲動時，nav-bar會固定在最上面--*/
 #nav-bar
 {
     position: sticky;
