@@ -1,166 +1,82 @@
-<!doctype html>
-<html lang="zh-hant-TW"><!--指定網頁使用的語言-->
-<head>
-<!--下面這一行viewport一定要加才能做響應式網頁--> 
-<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" >
-<title>《STEAM教育》Fun多比</title> <!--網頁名稱-->
-<link rel="icon" href="https://dobby2017.github.io/main/images/Favicon.ico">  <!--Favicon (favorites icon)-->
-<link rel="stylesheet" href="style.css">  
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<!--1. bootstrap 2. Get started 3. CSS & JS-->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<!--1. font awesome 4 cdn 2. Font Awesome CSS--> 
-</head>
-<body>
-<!----------選單區塊----------> 
-<section id="nav-bar">
-<!--1. bootstrap 2. Documentation 3. Components 4. Navbar-->
-<nav class="navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand" href="#"><img src="images/logo.gif"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <i class="fa fa-bars"></i>  <!--1. font awesome 5 2. Icons--> 
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ml-auto"><!--ml-auto：Navbar和選單一左一右--> 
-      <li class="nav-item">
-        <a class="nav-link" href="#">多比首頁</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">多比服務(所有課程)</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">關於我們(含師資群)</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">課程記實(課程記錄)</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-</section>
-<!----------banner區塊----------> 
-<section id="banner">
-<div class="container">
-<div class="row">
-<div class="col-md-6">
-<p class="prompt-title">最專業的兒童學習機構</p>
-<p>最專業的兒童學習機構 最專業的兒童學習機構 最專業的兒童學習機構 最專業的兒童學習機構 最專業的兒童學習機構 最專業的兒童學習機構</p>
-<a href="index.html"><img src="images/logo.gif" class="play-btn">看教學</a>
-</div> 
-<div class="col-md-6 text-center">
-<img src="images/Run%20Marco.jpg" class="img-fluid">   
-</div>
-</div>
-</div>
-<img src="images/wave1.png" class="bottom-img">    
-</section>
-<!----------服務區塊---------->     
-<section id="services">
-<div class="container text-center">
-<h1 class="title">我們在做什麼</h1>
-<div class="row text-center">
-<div class="col-md-4 services">
-<img src="images/Run%20Marco.jpg" class="service-img">
-<h4>機器人一、二級檢定</h4>
-<p>123123123123123123123123123</p>
-</div>
-<div class="col-md-4 services">
-<img src="images/Run%20Marco.jpg" class="service-img">
-<h4>程式園地</h4>
-<p>123123123123123123123123123</p>
-</div>
-<div class="col-md-4 services">
-<img src="images/Run%20Marco.jpg" class="service-img">
-<h4>創客園地</h4>
-<p>123123123123123123123123123</p>
-</div>
-</div>
-    <button type="button" class="btn btn-primary">所有服務</button>
-</div>  
-</section> 
-<!----------關於我們區塊---------->    
-<section id="about-us">
-<div class="container">
-<h1 class="title text-center">為什麼選擇我們</h1>
-<div class="row">
-<div class="col-md-6 about-us">
-<p class="about-title">為什我們不一樣</p>
-    <ui>
-    <li>為什我們不一樣 </li>
-    <li>為什我們不一樣 </li>
-    <li>為什我們不一樣 </li>
-    <li>為什我們不一樣 </li>
-    </ui>
-</div>
-<div class="col-md-6 text-center">
-<img src="images/Run%20Marco.jpg" class="img-fluid">    
-</div>
-</div>
-</div> 
-</section>   
-<!----------客戶感言區塊---------->  
-<section id="testimonials">
-<div class="container">
-<h1 class="title text-center">我們的客戶說什麼</h1>
-<!--offset-1讓col-md-5置中-->
-<div class="row offset-1">
-<div class="col-md-5 testimonials">  
-    <p> 家長 我們的客戶說什麼  我們的客戶說什麼 我們的客戶說什麼 我們的客戶說什麼 我們的客戶說什麼</p>
-    <img src="images/Run%20Marco.jpg">
-    <p class="user-details"><b>王小明</b><br>家長</p>
-</div>
-<div class="col-md-5 testimonials">  
-    <p> 家長 我們的客戶說什麼  我們的客戶說什麼 我們的客戶說什麼 我們的客戶說什麼 我們的客戶說什麼</p>
-    <img src="images/Run%20Marco.jpg">
-    <p class="user-details"><b>王小明</b><br>家長</p>
-</div>
-</div>     
-</div>    
-</section>
-<!----------連繫我們區塊---------->
-<section id="social-media">
-<div class="container text-center">
-<p>在其它媒體連繫我們</p>
-    <div class="social-icons">
-    <a href="#"><img src="images/facebook.png"></a>
-    <a href="#"><img src="images/instagram.png"></a>
-    <a href="#"><img src="images/youtube.png"></a>
-    </div>
-</div>
-</section>  
- <!----------footer---------->
-<section id="footer">
-<img src="images/wave2.png" class="footer-img">
-<div class="container">
-<div class="row">
-<div class="col-md-4 footer-box">
-<img src="images/logo.gif">
-    <p> 家長 我們的客戶說什麼  我們的客戶說什麼 我們的客戶說什麼 我們的客戶說什麼 我們的客戶說什麼</p>
-</div>
-<div class="col-md-4 footer-box">
-    <p><b>連繫我們</b></p>
-    <p><i class="fa fa-user"></i>LINE ID：fundobby</p>
-    <p><i class="fa fa-phone"></i>  0912345678  </p>
-    <p><i class="fa fa-envelope-o"></i>  fundobby@gmail.com  </p>
-</div>
-<div class="col-md-4 footer-box">
-    <p><b>專人回電</b></p>
-<form action="https://formspree.io/f/dobbysteamkids@gmail.com" method="POST">
-  <input type="tel" name="tel" class="form-control" placeholder="家長手機">
-  <input type="submit" class="btn btn-primary" value="送出">
-</form>
-</div>
-</div>
-    <hr>
-    <p class="copyright">Designed with <i class="fa fa-heart"></i>  by DobbySteam</p>
-</div>    
-</section>
-<script>
-    var contactform =  document.getElementById('contactform');
-    contactform.setAttribute('action', '//formspree.io/' + 'dobbysteamkids' + '@' + 'gmail' + '.' + 'com');
-</script>
-</body>
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--Meta標籤--><!--下面那行是網頁的編碼-->
+        <meta charset="utf-8"></meta>
+        <title>逸恩的網頁</title>
+        <meta name="description" content="逸恩的網站"/><!--前面的程式碼是讓他在Google搜尋之後他的下面會有一個淺淺灰色的字的地方的字-->
+        <meta name="author" content="逸恩"><!--前面的程式碼師讓他知道這個網站的創作者是逸恩-->
+        <meta name="keywords" content="逸恩,逸恩的網站,逸恩的網頁"><!--前面的程式是讓他知道假如搜尋後面橘色字的關鍵字就會讓他有這個網頁可以選-->
+        <meta name="viwport" content="width=device-width, initial-scale=1.0"/><!--前面的viwport的意思是視口--><!--視口後面的程式碼事告訴他要調整網頁的比例和一進去的時候百分比設定是100-->
+    </head>
+    <body>
+        <h2>逸恩的網頁</h2> <!--前面的H1到H6是指字型的大小-->
+        <!--基本標籤-->   
+        <h4>1</h4>
+        <p>逸恩<b>第一次</b>做<i>網頁</i></p><!--前面的<P>是指內文--><!--前面的<b>是讓字變粗體--><!--前面的<i>是讓字寫體-->
+        <dr/>
+        <hr/><!--前面的程式是在表達中間加一條線-->
+        <dr/><!--前面的程式是讓他在表格中空一行-->
+        <h4>2</h4>
+        <P>今天是7月8號但是<b>沒下</b>午後<i>雷陣雨</i>好開心</P>
+        <!--連結-->
+        <a href="https://www.google.com/">Google網站</a><!--前面的<a>是是讓它可以連接其他東西-->
+        <a href="test1.html">測試-1</a><!--前面的href是一個屬性-->
+        <a href="test/test2.html">測試-2</a><!--後面的測試二是他要連接到那個地方在網頁上寫的名稱-->
+        <a href="board game.html">桌遊</a>
+        <dr/>
+        <!--影片、嵌入影片-->
+        <video src="videos/dolphin-facts-14-facts-about-dolphins.mp4" width="500" height="260" controls>無法載入此影片</video>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/iL2DvDE69Qc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>"
+        <!--列表、表格-->
+        <div><!--前面程式的作用是假如你要對著下面的全部程式下載CSS的程式碼的話就可以只要下一次不必一個一個下-->
+        <ul><!--ul是讓他出現一個前面有點點的列表-->
+            <li>a</li><!--il是讓他知道哪一個是一個項目每一個il和一個il結尾就代表一個項目-->
+            <li>b</li>
+            <li>c</li>
+        </ul>
+        <ol><!--ol是讓他前面的點點可以改成其他東西的最前面要用的東西，如果前面只有ol他就會使用數字排列-->
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </ol>
+        <ol type="A"><!--ol後面的type="A"是讓他最前面的點點符號改成用大寫字母ABC...的排序方法-->
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </ol>
+        <ol type="a"><!--ol後面的type="a"是讓他最前面的點點符號改成用小寫字母ABC...的排序方法-->
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </ol>
+        <ol type="i"><!--ol後面的type="i"是讓他最前面的點點符號改成用小寫的羅馬數字的排序方法-->
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </ol>
+        <ol type="I"><!--ol後面的type="I"是讓他最前面的點點符號改成用大寫的羅馬數字的排序方法-->
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </ol>
+
+        <table width="250"><!--table是讓他可以用沒有線的表格的指令--><!--table後面的width="250"是調整表格大小用-->
+            <tr><!--tr是讓他知道表格的第一行要寫什麼或表格的第二行要寫什麼...-->
+                <td>a</td><!--是讓他知道橫排的一個一個項目是什麼-->
+                <td>b</td>
+                <td>c</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>B</td>
+                <td>C</td>
+            </tr>
+        </table>
+        </div>
+        <div>div1</div><!--前面程式的作用是假如你要對著下面的全部程式下載CSS的程式碼的話就可以只要下一次不必一個一個下(如果兩個Div的程式他會在不同行)-->
+        <div>div2</div>
+        <span>span1</span><!--前面程式的作用是假如你要對著下面的全部程式下載CSS的程式碼的話就可以只要下一次不必一個一個下(但如果有兩個span的程式他會在同一行)-->
+        <span>span2</span>
+    </body>
 </html>
