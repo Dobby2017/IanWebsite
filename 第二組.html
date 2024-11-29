@@ -1,0 +1,186 @@
+<html><head><base href="/">
+    <title>動物尋寶遊戲</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f0f8ff;
+    }
+    .hint-container {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .question-container {
+        display: none;
+        background-color: #e6ffe6;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+    }
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+    #result {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+    .hidden {
+        display: none;
+    }
+    </style>
+    </head>
+    <body>
+    <h1>動物尋寶遊戲</h1>
+    <p>根據提示猜出動物，然後回答問題！</p>
+    
+    <div id="game-container">
+        <div class="hint-container">
+            <h2>第<span id="current-level">1</span>關</h2>
+            <h3>提示：</h3>
+            <div id="hints"></div>
+            <input type="text" id="animal-input" placeholder="請輸入動物名稱">
+            <button onclick="checkAnimal()">確認動物</button>
+            <p id="animal-result"></p>
+        </div>
+    
+        <div id="question-container" class="question-container">
+            <h3>問題：</h3>
+            <p id="question"></p>
+            <input type="text" id="answer-input" placeholder="請輸入答案">
+            <button onclick="checkAnswer()">提交答案</button>
+            <p id="result"></p>
+        </div>
+    </div>
+    
+    <script>
+    const gameData = [
+        {
+            animal: "大長臂猿",
+            hints: [
+                "黑色或灰色毛髮",
+                "長長的手臂",
+                "熱帶雨林區",
+                "會互相理毛"
+            ],
+            question: "成年的大長臂猿可以把聲音傳送到幾公里遠?",
+            answer: ["2", "二", "兩", "2公里", "二公里", "兩公里"]
+        },
+        {
+            animal: "二趾樹懶",
+            hints: [
+                "動作緩慢",
+                "夜間覓食",
+                "擅長游泳",
+                "穿山甲館"
+            ],
+            question: "二趾樹懶有哪一項特殊技能？",
+            answer: ["游泳", "擅長游泳"]
+        },
+        {
+            animal: "無尾熊",
+            hints: [
+                "以桉樹為主食",
+                "樹棲動物",
+                "夜行性動物",
+                "兒童動物區附近"
+            ],
+            question: "讓無尾熊休息與活動的樹木叫什麼？",
+            answer: ["棲木"]
+        },
+        {
+            animal: "狐蒙",
+            hints: [
+                "兒童動物區",
+                "肉食性",
+                "挖地洞為巢",
+                "有細長的尾巴"
+            ],
+            question: "狐蒙屬於哪種動物？",
+            answer: ["肉食性"]
+        },
+        {
+            animal: "馬來虎",
+            hints: [
+                "我在熱帶雨林區",
+                "體型小的老虎亞種之一",
+                "肉食性",
+                "馬來西亞國家象徵之一"
+            ],
+            question: "我住在哪裡?熱帶和亞熱帶森林、______、草地",
+            answer: ["灌叢"]
+        }
+    ];
+    
+    let currentLevel = 0;
+    
+    function initializeLevel() {
+        document.getElementById('current-level').textContent = currentLevel + 1;
+        const hintsHtml = gameData[currentLevel].hints
+            .map(hint => `<p>• ${hint}</p>`)
+            .join('');
+        document.getElementById('hints').innerHTML = hintsHtml;
+        document.getElementById('animal-input').value = '';
+        document.getElementById('answer-input').value = '';
+        document.getElementById('animal-result').textContent = '';
+        document.getElementById('result').textContent = '';
+        document.getElementById('question-container').style.display = 'none';
+    }
+    
+    function checkAnimal() {
+        const input = document.getElementById('animal-input').value.trim();
+        if (input.toLowerCase() === gameData[currentLevel].animal.toLowerCase()) {
+            document.getElementById('animal-result').textContent = '正確！';
+            document.getElementById('question-container').style.display = 'block';
+            document.getElementById('question').textContent = gameData[currentLevel].question;
+        } else {
+            document.getElementById('animal-result').textContent = '不正確，請再試一次！';
+        }
+    }
+    
+    function checkAnswer() {
+        const input = document.getElementById('answer-input').value.trim();
+        const correctAnswers = Array.isArray(gameData[currentLevel].answer) 
+            ? gameData[currentLevel].answer 
+            : [gameData[currentLevel].answer];
+        
+        if (correctAnswers.some(answer => input === answer)) {
+            document.getElementById('result').textContent = '答對了！';
+            if (currentLevel < gameData.length - 1) {
+                setTimeout(() => {
+                    currentLevel++;
+                    initializeLevel();
+                }, 1500);
+            } else {
+                setTimeout(() => {
+                    alert('恭喜你完成了所有關卡！');
+                }, 1500);
+            }
+        } else {
+            document.getElementById('result').textContent = '答錯了，請再試一次！';
+        }
+    }
+    
+    // 初始化第一關
+    initializeLevel();
+    </script>
+    
+    </body></html>
+    
