@@ -1,0 +1,121 @@
+<html>
+<head>
+<base href="/">
+<title>動物尋寶遊戲</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f8ff;
+}
+.hint-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.question-container {
+    display: none;
+    background-color: #e6ffe6;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #45a049;
+}
+#result {
+    margin-top: 10px;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+<h1>動物尋寶遊戲</h1>
+<p>根據提示猜出動物，然後回答問題！</p>
+
+<div id="game-container">
+    <div class="hint-container">
+        <h2>第1關</h2>
+        <h3>提示：</h3>
+        <div id="hints"></div>
+        <input type="text" id="animal-input" placeholder="請輸入動物名稱">
+        <button onclick="checkAnimal()">確認動物</button>
+        <p id="animal-result"></p>
+    </div>
+
+    <div id="question-container" class="question-container">
+        <h3>問題：</h3>
+        <p id="question"></p>
+        <input type="text" id="answer-input" placeholder="請輸入答案">
+        <button onclick="checkAnswer()">提交答案</button>
+        <p id="result"></p>
+    </div>
+</div>
+
+<script>
+const gameData = {
+    animal: "小爪水獺",
+    hints: [
+        "我是我們物種裡最小的",
+        "以魚、蛙、蟹、螯蝦和貝類為食",
+        "我在熱帶雨林區"
+    ],
+    question: "小爪水獺是全世界體型最__的水獺",
+    answer: "小"
+};
+
+function initializeLevel() {
+    const hintsHtml = gameData.hints
+        .map(hint => `<p>• ${hint}</p>`)
+        .join('');
+    document.getElementById('hints').innerHTML = hintsHtml;
+    document.getElementById('animal-input').value = '';
+    document.getElementById('answer-input').value = '';
+    document.getElementById('animal-result').textContent = '';
+    document.getElementById('result').textContent = '';
+    document.getElementById('question-container').style.display = 'none';
+}
+
+function checkAnimal() {
+    const input = document.getElementById('animal-input').value.trim();
+    if (input === gameData.animal) {
+        document.getElementById('animal-result').textContent = '正確！';
+        document.getElementById('question-container').style.display = 'block';
+        document.getElementById('question').textContent = gameData.question;
+    } else {
+        document.getElementById('animal-result').textContent = '不正確，請再試一次！';
+    }
+}
+
+function checkAnswer() {
+    const input = document.getElementById('answer-input').value.trim();
+    if (input === gameData.answer) {
+        document.getElementById('result').textContent = '答對了！恭喜你完成了關卡！';
+    } else {
+        document.getElementById('result').textContent = '答錯了，請再試一次！';
+    }
+}
+
+// 初始化第一關
+initializeLevel();
+</script>
+
+</body>
+</html>
