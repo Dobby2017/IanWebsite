@@ -1,0 +1,183 @@
+<html><head><base href="/">
+<title>動物尋寶遊戲</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f8ff;
+}
+.hint-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.question-container {
+    display: none;
+    background-color: #e6ffe6;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #45a049;
+}
+#result {
+    margin-top: 10px;
+    font-weight: bold;
+}
+.hidden {
+    display: none;
+}
+</style>
+</head>
+<body>
+<h1>動物尋寶遊戲</h1>
+<p>根據提示猜出動物，然後回答問題！</p>
+
+<div id="game-container">
+    <div class="hint-container">
+        <h2>第<span id="current-level">1</span>關</h2>
+        <h3>提示：</h3>
+        <div id="hints"></div>
+        <input type="text" id="animal-input" placeholder="請輸入動物名稱">
+        <button onclick="checkAnimal()">確認動物</button>
+        <p id="animal-result"></p>
+    </div>
+
+    <div id="question-container" class="question-container">
+        <h3>問題：</h3>
+        <p id="question"></p>
+        <input type="text" id="answer-input" placeholder="請輸入答案">
+        <button onclick="checkAnswer()">提交答案</button>
+        <p id="result"></p>
+    </div>
+</div>
+
+<script>
+const gameData = [
+    {
+        animal: "智利紅鶴",
+        hints: [
+            "我在鳥園",
+            "我們的腳呈灰色，但膝蓋卻是粉紅色的。",
+            "大型的紅鸛，長110-130公分"
+        ],
+        question: "我住在哪裡智利的海岸的泥地、_____、瀉湖及內陸鹹水湖?",
+        answer: "河口"
+    },
+    {
+        animal: "白腹秧雞",
+        hints: [
+            "我在鳥園",
+            "羽毛有白色和黑色,我的嘴和腳是黃色",
+            "我分布在南亞和東南亞",
+            "身長約32公分"
+        ],
+        question: "我多久清理一次羽毛?",
+        answer: ["每天", "每一天", "每1天"]
+    },
+    {
+        animal: "食蛇龜",
+        hints: [
+            "我在兩棲爬蟲動物館",
+            "我有殼眼後到頸部有一條黃色縱紋",
+            "日行性",
+            "較少在水中活動"
+        ],
+        question: "我的腹甲是什麼顏色?",
+        answer: ["黑色、黃色"]
+    },
+    {
+        animal: "白犀牛",
+        hints: [
+            "我在非洲動物區",
+            "灰白厚色皮",
+            "體型巨大",
+            "草食性動物"
+        ],
+        question: "我用腳的哪部分走路?",
+        answer: "腳趾"
+    },
+    {
+        animal: "水豚",
+        hints: [
+            "我在熱帶雨林區",
+            "我的毛是棕灰色的",
+            "看起來笨重但其實身手矯捷"
+        ],
+        question: "水豚的重量可以高達幾公斤",
+        answer: ["70", "七十"]
+    }
+];
+
+let currentLevel = 0;
+
+function initializeLevel() {
+    document.getElementById('current-level').textContent = currentLevel + 1;
+    const hintsHtml = gameData[currentLevel].hints
+        .map(hint => `<p>• ${hint}</p>`)
+        .join('');
+    document.getElementById('hints').innerHTML = hintsHtml;
+    document.getElementById('animal-input').value = '';
+    document.getElementById('answer-input').value = '';
+    document.getElementById('animal-result').textContent = '';
+    document.getElementById('result').textContent = '';
+    document.getElementById('question-container').style.display = 'none';
+}
+
+function checkAnimal() {
+    const input = document.getElementById('animal-input').value.trim();
+    if (input.toLowerCase() === gameData[currentLevel].animal.toLowerCase()) {
+        document.getElementById('animal-result').textContent = '正確！';
+        document.getElementById('question-container').style.display = 'block';
+        document.getElementById('question').textContent = gameData[currentLevel].question;
+    } else {
+        document.getElementById('animal-result').textContent = '不正確，請再試一次！';
+    }
+}
+
+function checkAnswer() {
+    const input = document.getElementById('answer-input').value.trim();
+    const correctAnswers = Array.isArray(gameData[currentLevel].answer) 
+        ? gameData[currentLevel].answer 
+        : [gameData[currentLevel].answer];
+    
+    if (correctAnswers.some(answer => input === answer)) {
+        document.getElementById('result').textContent = '答對了！';
+        if (currentLevel < gameData.length - 1) {
+            setTimeout(() => {
+                currentLevel++;
+                initializeLevel();
+            }, 1500);
+        } else {
+            setTimeout(() => {
+                alert('恭喜你完成了所有關卡！');
+            }, 1500);
+        }
+    } else {
+        document.getElementById('result').textContent = '答錯了，請再試一次！';
+    }
+}
+
+// 初始化第一關
+initializeLevel();
+</script>
+
+</body></html>
