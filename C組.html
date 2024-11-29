@@ -1,0 +1,185 @@
+<html><head><base href="/">
+    <title>動物尋寶遊戲</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f0f8ff;
+    }
+    .hint-container {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .question-container {
+        display: none;
+        background-color: #e6ffe6;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+    }
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+    #result {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+    .hidden {
+        display: none;
+    }
+    </style>
+    </head>
+    <body>
+    <h1>動物尋寶遊戲</h1>
+    <p>根據提示猜出動物，然後回答問題！</p>
+    
+    <div id="game-container">
+        <div class="hint-container">
+            <h2>第<span id="current-level">1</span>關</h2>
+            <h3>提示：</h3>
+            <div id="hints"></div>
+            <input type="text" id="animal-input" placeholder="請輸入動物名稱">
+            <button onclick="checkAnimal()">確認動物</button>
+            <p id="animal-result"></p>
+        </div>
+    
+        <div id="question-container" class="question-container">
+            <h3>問題：</h3>
+            <p id="question"></p>
+            <input type="text" id="answer-input" placeholder="請輸入答案">
+            <button onclick="checkAnswer()">提交答案</button>
+            <p id="result"></p>
+        </div>
+    </div>
+    
+    <script>
+    const gameData = [
+        {
+            animal: "石虎",
+            hints: [
+                "體型似家貓",
+                "夜行性",
+                "擅游泳、爬樹",
+                "臺灣動物區"
+            ],
+            question: "石虎在台灣的危機A:棲地大量碎裂化、___________、過馬路被車車撞路死、流浪貓狗的競爭",
+            answer: "棲地減少"
+        },
+        {
+            animal: "穿山甲",
+            hints: [
+                "鱗片覆蓋身體，呈灰褐色",
+                "夜行性",
+                "穴居動物",
+                "臺灣動物區"
+            ],
+            question: "我出生多久才會獨立生活?A:6個月，六個月",
+            answer: ["6個月", "六個月"]
+        },
+        {
+            animal: "南方食火雞",
+            hints: [
+                "黑色羽毛，鮮艷的藍色和紅色頭部皮膚",
+                "大型走禽",
+                "主要吃掉落在地面的水果，也會吃種子、昆蟲、小動物或腐肉",
+                "澳洲動物區"
+            ],
+            question: "火雞的羽毛___且疏鬆",
+            answer: "硬且疏鬆"
+        },
+        {
+            animal: "弓角羚羊",
+            hints: [
+                "草食性，以草、樹葉、樹根和其他灌木為食",
+                "頭上長有螺旋形彎曲的角",
+                "身體為米色到淡灰色",
+                "沙漠動物區"
+            ],
+            question: "我的蹄的底部是甚麼形狀A:扇形",
+            answer: "扇形"
+        },
+        {
+            animal: "大貓熊",
+            hints: [
+                "熱帶雨林區附近",
+                "獨居動物",
+                "最活躍的時間在早晨和黃昏"
+            ],
+            question: "我的甚麼腸不發達A:盲腸",
+            answer: "盲腸"
+        }
+    ];
+    
+    let currentLevel = 0;
+    
+    function initializeLevel() {
+        document.getElementById('current-level').textContent = currentLevel + 1;
+        const hintsHtml = gameData[currentLevel].hints
+            .map(hint => `<p>• ${hint}</p>`)
+            .join('');
+        document.getElementById('hints').innerHTML = hintsHtml;
+        document.getElementById('animal-input').value = '';
+        document.getElementById('answer-input').value = '';
+        document.getElementById('animal-result').textContent = '';
+        document.getElementById('result').textContent = '';
+        document.getElementById('question-container').style.display = 'none';
+    }
+    
+    function checkAnimal() {
+        const input = document.getElementById('animal-input').value.trim();
+        if (input === gameData[currentLevel].animal) {
+            document.getElementById('animal-result').textContent = '正確！';
+            document.getElementById('question-container').style.display = 'block';
+            document.getElementById('question').textContent = gameData[currentLevel].question;
+        } else {
+            document.getElementById('animal-result').textContent = '不正確，請再試一次！';
+        }
+    }
+    
+    function checkAnswer() {
+        const input = document.getElementById('answer-input').value.trim();
+        const correctAnswers = Array.isArray(gameData[currentLevel].answer) 
+            ? gameData[currentLevel].answer 
+            : [gameData[currentLevel].answer];
+        
+        if (correctAnswers.some(answer => input === answer)) {
+            document.getElementById('result').textContent = '答對了！';
+            if (currentLevel < gameData.length - 1) {
+                setTimeout(() => {
+                    currentLevel++;
+                    initializeLevel();
+                }, 1500);
+            } else {
+                setTimeout(() => {
+                    alert('恭喜你完成了所有關卡！');
+                }, 1500);
+            }
+        } else {
+            document.getElementById('result').textContent = '答錯了，請再試一次！';
+        }
+    }
+    
+    // 初始化第一關
+    initializeLevel();
+    </script>
+    
+    </body></html>
+    
